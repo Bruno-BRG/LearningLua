@@ -1,12 +1,14 @@
 function isPalindrome(num)
-    local str = tostring(num)
-    local len = #str
-    for i = 1, len // 2 do
-        if str:sub(i, i) ~= str:sub(len - i + 1, len - i + 1) then
-            return false
-        end
+    local reversedNum = 0
+    local originalNum = num
+
+    while num > 0 do
+        local digit = num % 10
+        reversedNum = reversedNum * 10 + digit
+        num = math.floor(num / 10)
     end
-    return true
+
+    return reversedNum == originalNum
 end
 
 function findHighestPalindrome()
